@@ -14,28 +14,44 @@ even_num = 0
 odd_num = 0
 product = 1
 
-n = int(input("How many People do you want to analyze: "))
+try: 
+    n = int(input("How many People do you want to analyze (3-10): "))
+    if not 3 <= n <= 10:
+        print("Out of range")
+        exit()
 
-for i in range(n):
-    while True:
-        try:
-            num = int(input(f"\nNumbers is {i + 1}: "))
-            numbers.append(num)
+    for i in range(n):
+        while True:
+            try:
+                num = int(input(f"\nEnter Number {i + 1}: "))
+                numbers.append(num)
 
-            if num % 2 == 0:
-                even_num += 1
-            else:
-                odd_num += 1
-            
-            print(f"squared: {i ** 2}")
+                if num % 2 == 0:
+                    even_num += 1
+                else:
+                    odd_num += 1
+                
+                product *= num
+                print(f"{num} squared is: {num ** 2}")
 
-            break
-        except ValueError:
-            print("Enter valid integer")
+                break
+            except ValueError:
+                print("Enter valid integer")
 
-num_sum = sum(numbers)
-average = sum(numbers) / len(numbers)
-minimum = min(numbers)
-maximum = max(numbers)
+    num_sum = sum(numbers)
+    average = num_sum / len(numbers)
+    minimum = min(numbers)
+    maximum = max(numbers)
 
-print()
+    print("\nNumbers entered:", numbers)
+    print(f"Total even numbers: {even_num}")
+    print(f"Total odd numbers: {odd_num}")
+    print(f"Sum of numbers: {num_sum}")
+    print(f"Average of numbers: {average}")
+    print(f"Product of numbers: {product}")
+    print(f"Minimum number: {minimum}")
+    print(f"Maximum number: {maximum}")
+
+except ValueError:
+    print("Invalid input! Please enter a valid number.")
+    exit()

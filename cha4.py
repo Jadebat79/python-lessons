@@ -18,7 +18,6 @@
 
 try:
     n = int(input("Enter number between 1 and 20: "))
-    
     if not 1 <= n <= 20:
         print("out of range")
         exit()
